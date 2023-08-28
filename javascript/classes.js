@@ -15,14 +15,14 @@
 // - color (String): the color of the bicycle
 // - manufacturer (String): the manufacturer of the bicycle
 class Bicycle {
-  constructor(manufacturer, color, numWheels){
+  constructor(color, manufacturer, numWheels = 2){
     this.manufacturer = manufacturer;
     this.color = color;
     this.numWheels = numWheels;
   }
   // Replace this with your code
 }
-let bicycle = new Bicycle('Santa Fe', 'red', 2);
+let bicycle = new Bicycle('red', 'Schwinn');
 
 // This User class is intended to be used in a web application where users can
 // log in with a username and password.
@@ -83,12 +83,10 @@ class Library {
     
     for(let aut of this.books){
       if(aut.author === author ){
-        return this.books;
-
-      }else {
-        return emptyBook;
+        emptyBook.push(aut)
       }
     }
+    return emptyBook;
 
     
     
@@ -124,7 +122,15 @@ class Rectangle {
 }
 
 class Square extends Rectangle {
-  constructor()
+  constructor(size){
+    super(size,size)
+  }
+  getArea(){
+    if(this.length === this.width){
+      return this.length * this.width;
+    }
+    return
+  }
 
   // Replace this with your code
 }

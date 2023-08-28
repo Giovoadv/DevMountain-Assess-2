@@ -14,7 +14,7 @@ function myArr() {
     
   // Replace this with your code
 }
-
+//console.log(myArr());
 
 
 
@@ -23,12 +23,15 @@ function myArr() {
 // Return the letter 'z' from `nestedLetters` using bracket notation.
 function getZ() {
   const nestedLetters = ['m', 'g', 'e', 'q', 'h', ['n', 'b', ['v', 'z', 'y', 'r']], 'a'];
-
-    const zLetter = [5][2][1][1];
+  let arr = nestedLetters[5];
+  let arr2 = arr[2]; 
+  let z = arr2[1];
   
-  return zLetter;
-   // Replace this with your code}
+  return z;
+  
+  
 }
+//console.log(getZ());
 
 
 
@@ -55,6 +58,7 @@ function animalsWithElephant() {
 
   const animalsCopy = [...animals];
   animalsCopy.push('elephant');
+  return animalsCopy;
 
   // Replace this with your code
 }
@@ -89,18 +93,18 @@ function evenShapes() {
     octagon: 8,
   };
 
-    for(let i of shapes){
-      if(shapes[i] % 2 ===0){
+    for(let shape in shapes){
+      
+      if(shapes[shape] % 2 ===0){
 
       }else {
-        delete shapes[i]
+        delete shapes[shape];
       }
+      
     }
-
-  // Replace this with your code
-
   return shapes;
 }
+//console.log(evenShapes())
 
 // Write a for loop that loops over the courses array,
 // nest a for in loop to loop over each object.
@@ -134,10 +138,10 @@ function betterCourses() {
     },
   ];
   for(let i =0; i < courses.length; i++){
-    for(let x of courses[i]){
-        if(courses[x] === true){
-            courses[x] = false;
-            courses[x] = false;
+    for(let x in courses[i]){
+        if(courses[i][x] === true){
+            courses[i][x] = false;
+            
         }
     }
   }
@@ -145,6 +149,7 @@ function betterCourses() {
   
   return courses;
 }
+//console.log(betterCourses());
 
 // Use nested for loops to compare the letters in the lettersToPair array below.
 // When you find a pair, push the indexes of the letters into the pairsArray as an array.
@@ -157,7 +162,19 @@ function findPairs() {
   const pairsArray = [];
 
     for(let i = 0; i < lettersToPair.length; i++){
+      let letter = lettersToPair[i];
 
+      for(let x = i+1; x < lettersToPair.length; x++){
+        let letter2 = lettersToPair[x];
+        if(letter === letter2){
+
+          let arr = [i,x];
+          pairsArray.push(arr);
+            
+          
+        }
+      } 
+      
     }
 
 
@@ -165,6 +182,7 @@ function findPairs() {
 
   return pairsArray;
 }
+console.log(findPairs())
 
 // For these problems we will be using the objects below, contactInfo and shippingInfo,
 // as well as objects that you will make based off these two.
@@ -188,6 +206,7 @@ function getHelensInfo() {
 
   let newObj = Object.assign({}, contactInfo, shippingInfo);
   // Replace this with your code
+  return newObj;
 }
 
 // Return Helen's email using destructuring.
@@ -196,6 +215,7 @@ function getHelensEmail() {
   let {email} = contactInfo;
 
   // Replace this with your code
+  return email;
 }
 
 // Use destructuring to save the zip code and state
@@ -203,7 +223,7 @@ function getHelensEmail() {
 function getZipAndState() {
 
   let {state, zipCode} = shippingInfo;
-  let zipState = shippingInfo;
+  return [zipCode, state];
   // Replace this with your code
 }
 
@@ -273,7 +293,7 @@ const userInfo = {
 
 // Return the value of alerts in gn@rly_c0der_007's settings using dot notation.
 function shouldAlert() {
-
+  return userInfo.settings.alerts;
   
   // Replace this with your code
 }
@@ -281,12 +301,14 @@ function shouldAlert() {
 // Return the last item in gn@rly_c0der_007's topics array
 // using dot and/or bracket notation.
 function lastTopic() {
+  return userInfo.topics[3];
   // Replace this with your code
 }
 
 // Return the userId of the first response to
 // gn@rly_c0der_007's 2nd comment using dot/bracket notation.
 function firstResponseId() {
+  return userInfo.comments[1].responses[0].userId;
   // Replace this with your code
 }
 

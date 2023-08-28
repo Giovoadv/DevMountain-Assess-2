@@ -14,16 +14,18 @@ const bestMovie = (movie) => {
 // The function should return the bigger number.
 // If the numbers are the same, just return the number.
 const compareNums = (num1, num2) =>{
-  let biggerNumber;
+  
   if( num1 > num2){
-    biggerNumber = num1
-  }else if(num2 < num1){
-    biggerNumber = num2;
+    return  num1
+  }else if(num2 > num1){
+    return num2
   }else{
-    return biggerNumber;
+    return num1;
 
   }
 } // Replace `undefined` with your code
+//
+//console.log(compareNums(2,4))
 
 const foods = [
   {
@@ -102,31 +104,44 @@ const products = [
 // Using the map method, make a copy of your products array with the prices reduced by 25%
 // and return it.
 function getSaleProducts() {
-  let products25Off = products.map(saleObj)
-  let discount = .25;
-  let {price} = saleObj;
-  price = price - (price*discount);
-  return {...saleObj, price};
+  let mapFunction = (elemento) =>{
+    let elementoCopy = Object.assign({}, elemento);
+    let discount = elementoCopy.price - (elementoCopy.price * 0.25);
+    elementoCopy.price = discount;
+    return elementoCopy;
+  }
+
+  let products25Off = products.map(mapFunction)
+  return products25Off;
+
 
   // Replace this with your code
 }
-
+//console.log(getSaleProducts())
 // A customer has placed an order - they want one of every product that has blue on it.
 // Using the filter method return the products that have blue in their color array
 // to a new variable called 'blueProducts' and return it.
 // (Hint: look up the array method 'includes' on MDN)
 function getBlueProducts() {
-  let blueProducts = products.filter(obj);
-  obj.color === 'blue';
+  
+  let filterFunction = (elemento) =>{
+    return elemento.color.includes("blue");
+  }
+  
+  
+  
+  let blueProducts = products.filter(filterFunction);
+  
   return blueProducts;
 
   // Replace this with your code
 }
+//console.log(getBlueProducts());
 
 // Get the total price of all the products using the reduce method.
 function getTotalPrice() {
   const initialValue = 0;
-  const totalPrice = products.reduce((acc, food) => acc + food.price + initialValue);
+  const totalPrice = products.reduce((acc, food) => acc + food.price, initialValue);
   return totalPrice;
                     
 
@@ -136,6 +151,7 @@ function getTotalPrice() {
 //const totalPrice = foods.reduce((sum, food) => sum + food.price, 0);
   // Replace this with your code
 }
+console.log(getTotalPrice())
 
 export {
   addCalories,
